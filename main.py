@@ -1,13 +1,7 @@
-import re
 import csv
 import requests
 from bs4 import BeautifulSoup
 
-authors = []
-author_refs = []
-titeles = []
-refs = []
-tags = []
 with open('table.csv', 'w', encoding='utf-8', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['author', 'a_ref', 'title', 'ref', 'tag', 'time'])

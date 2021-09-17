@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 with open('table.csv', 'w', encoding='utf-8', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(['author', 'a_ref', 'title', 'ref', 'tag', 'time'])
-    
+
     for i in range(1, 10):
         data = requests.get(
             'https://habr.com/ru/search/page' + str(i) + '/?q=web-scraping&target_type=posts&order=relevance')
@@ -24,9 +24,9 @@ with open('table.csv', 'w', encoding='utf-8', newline='') as file:
                     tmp_tag += '{}, '.format(tag.get_text())
 
                 writer.writerow([block_author.get_text().strip(),
-                '\'https://habr.com{}\''.format(block_author.get('href')),                               
+                'https://habr.com{}'.format(block_author.get('href')),                               
                 block_title.get_text(),
-                '\'https://habr.com{}\''.format(block_title.get('href')),
+                'https://habr.com{}'.format(block_title.get('href')),
                 tmp_tag,
                 block_time.get_text()])
         else:
